@@ -52,10 +52,10 @@ export default class Box extends Component {
                     <h1>{this.state.box.title}</h1>
                 </header>
 
-                <Dropzone onDropAccept = {this.handleUpload}>
+                <Dropzone onDropAccepted = {this.handleUpload}>
                     {({ getRootProps, getInputProps}) => (
-                        <div className = "upload" {... getRootProps()}>
-                            <input {... getInputProps()}/>
+                        <div className = "upload" {...getRootProps()}>
+                            <input {...getInputProps()}/>
                             <p>Arraste arquivos ou clique aqui</p>
                         </div>
                     )}
@@ -64,7 +64,7 @@ export default class Box extends Component {
                 <ul>
                     {this.state.box.files && this.state.box.files.map(file => (
                         <li key={file._id}>
-                            <a className="fileInfo" href={file.url} target="_blank">
+                            <a className="fileInfo" href={file.url} target="blank">
                                 <MdInsertDriveFile size={24} color="#A5Cfff" />
                                 <strong>{file.title}}</strong>
                             </a>
