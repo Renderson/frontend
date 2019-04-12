@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import api from "../../services/api";
-import {distanceInWords} from "date-fns";
+import { distanceInWords } from "date-fns";
 import pt from "date-fns/locale/pt";
 import Dropzone from "react-dropzone";
 import socket from "socket.io-client"
@@ -29,7 +29,7 @@ export default class Box extends Component {
         io.emit('connectRoom', box);
 
         io.on('file', data => {
-            this.setState({ box: { ...this.state.box, files: [data, ...this.state.box.files]}})
+            this.setState({ box: { ...this.state.box, files: [data, ...this.state.box.files] } });
         });
     };
 
@@ -46,16 +46,16 @@ export default class Box extends Component {
 
     render() {
         return (
-            <div id ="box-container">
+            <div id="box-container">
                 <header>
                     <img src={logo} alt="" />
                     <h1>{this.state.box.title}</h1>
                 </header>
 
-                <Dropzone onDropAccepted = {this.handleUpload}>
-                    {({ getRootProps, getInputProps}) => (
-                        <div className = "upload" {...getRootProps()}>
-                            <input {...getInputProps()}/>
+                <Dropzone onDropAccepted={this.handleUpload}>
+                    {({ getRootProps, getInputProps }) => (
+                        <div className="upload" {...getRootProps()}>
+                            <input {...getInputProps()} />
                             <p>Arraste arquivos ou clique aqui</p>
                         </div>
                     )}
@@ -69,9 +69,9 @@ export default class Box extends Component {
                                 <strong>{file.title}</strong>
                             </a>
                             <span>há{" "}
-                            {distanceInWords(file.createAt, new Date(), {
-                                locale: pt
-                            })}</span>
+                                {distanceInWords(file.createAt, new Date(), {
+                                    locale: pt
+                                })}</span>
                         </li>
                     ))}
                 </ul>
